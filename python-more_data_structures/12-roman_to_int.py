@@ -4,23 +4,27 @@
 
 def roman_to_int(roman_string):
     """Convert a Roman numeral string to an integer."""
-    if type(roman_string) is not str or roman_string is None:
+    if roman_string is None or type(roman_string) is not str:
         return 0
 
-    values = {
-        'I': 1, 'V': 5, 'X': 10, 'L': 50,
-        'C': 100, 'D': 500, 'M': 1000
+    roman_values = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000
     }
 
     total = 0
-    prev_value = 0
+    length = len(roman_string)
 
-    for char in reversed(roman_string):
-        value = values.get(char, 0)
-        if value < prev_value:
+    for i in range(length):
+        value = roman_values.get(roman_string[i], 0)
+        if i + 1 < length and value < roman_values.get(roman_string[i + 1], 0):
             total -= value
         else:
             total += value
-            prev_value = value
 
     return total
