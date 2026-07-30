@@ -1,7 +1,3 @@
 # ALU Higher Level Programming
 
-This repository contains solutions for the ALU Higher Level Programming curriculum, covering Python fundamentals and more advanced object-oriented concepts.
-
-## Directories
-
-- **python-more_classes**: Exercises on Python classes, private attributes, properties, class methods, static methods, and magic methods (`__str__`, `__repr__`, `__del__`).
+This repository contains projects and exercises completed as part of the ALU Higher Level Programming curriculum, covering Python fundamentals, object-oriented programming, and related topics.
