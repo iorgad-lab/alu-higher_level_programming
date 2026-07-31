@@ -1,2 +1,4 @@
-# Python - Network #0
-This project covers basics of HTTP, curl, and Bash scripting for networking.
+# python-network_0
+
+Bash scripts using curl to explore HTTP: response size, GET/DELETE/POST
+requests, custom headers, and discovering allowed methods via OPTIONS.

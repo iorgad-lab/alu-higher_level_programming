@@ -1,2 +1,3 @@
-#!/bin/bash
-curl -sX DELETE "$1"
+#!/usr/bin/env bash
+# Sends a DELETE request and displays the body of the response
+curl -s -X DELETE "$1"
