@@ -15,6 +15,7 @@ def print_stats(total_size, status_codes):
 total_size = 0
 status_codes = {}
 count = 0
+last_printed = -1
 
 try:
     for line in sys.stdin:
@@ -30,6 +31,11 @@ try:
         count += 1
         if count % 10 == 0:
             print_stats(total_size, status_codes)
+            last_printed = count
 except KeyboardInterrupt:
-    print_stats(total_size, status_codes)
+    if count != last_printed:
+        print_stats(total_size, status_codes)
     raise
+else:
+    if count != last_printed:
+        print_stats(total_size, status_codes)
