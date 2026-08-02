@@ -41,3 +41,9 @@ a must be an integer
 ... except TypeError as e:
 ...     print(e)
 a must be an integer
+
+>>> try:
+...     add_integer()
+... except TypeError as e:
+...     print(type(e).__name__)
+TypeError

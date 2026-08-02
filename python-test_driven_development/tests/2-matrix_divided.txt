@@ -45,3 +45,9 @@ div must be a number
 ... except ZeroDivisionError as e:
 ...     print(e)
 division by zero
+
+>>> try:
+...     matrix_divided()
+... except TypeError as e:
+...     print(type(e).__name__)
+TypeError

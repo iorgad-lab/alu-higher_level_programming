@@ -26,3 +26,9 @@ first_name must be a string
 ... except TypeError as e:
 ...     print(e)
 last_name must be a string
+
+>>> try:
+...     say_my_name()
+... except TypeError as e:
+...     print(type(e).__name__)
+TypeError
