@@ -16,6 +16,9 @@ Basic usage
 >>> matrix_divided([[1.5, 2.5], [3.5, 4.5]], 2)
 [[0.75, 1.25], [1.75, 2.25]]
 
+>>> matrix_divided([[1, 2, 3], [4, 5, 6]], float("inf"))
+[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+
 >>> try:
 ...     matrix_divided("not a matrix", 2)
 ... except TypeError as e:
@@ -48,6 +51,12 @@ division by zero
 
 >>> try:
 ...     matrix_divided()
+... except TypeError as e:
+...     print(type(e).__name__)
+TypeError
+
+>>> try:
+...     matrix_divided([[1, 2], [3, 4]])
 ... except TypeError as e:
 ...     print(type(e).__name__)
 TypeError
