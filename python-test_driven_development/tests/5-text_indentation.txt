@@ -1,0 +1,25 @@
+The ``5-text_indentation`` module
+====================================
+
+Basic usage
+-----------
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+>>> text_indentation("Hello. How are you? I am fine: thanks.")
+Hello.
+<BLANKLINE>
+How are you?
+<BLANKLINE>
+I am fine:
+<BLANKLINE>
+thanks.
+<BLANKLINE>
+
+>>> try:
+...     text_indentation(12)
+... except TypeError as e:
+...     print(e)
+text must be a string
+
+>>> text_indentation("")
