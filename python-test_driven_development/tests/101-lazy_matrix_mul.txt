@@ -14,22 +14,58 @@ array([[ 7, 10],
 array([[13, 16]])
 
 >>> try:
-...     lazy_matrix_mul([[1, 2], [3]], [[1, 2]])
-... except Exception:
-...     print("Error raised")
-Error raised
+...     lazy_matrix_mul("not a list", [[1, 2]])
+... except TypeError as e:
+...     print(e)
+m_a must be a list
 
 >>> try:
-...     lazy_matrix_mul([[1, 2]], [[1, 2]])
-... except Exception:
-...     print("Error raised")
-Error raised
+...     lazy_matrix_mul([[1, 2]], "not a list")
+... except TypeError as e:
+...     print(e)
+m_b must be a list
 
 >>> try:
 ...     lazy_matrix_mul([], [[1, 2]])
-... except Exception:
-...     print("Error raised")
-Error raised
+... except ValueError as e:
+...     print(e)
+m_a can't be empty
+
+>>> try:
+...     lazy_matrix_mul([[1, 2]], [[]])
+... except ValueError as e:
+...     print(e)
+m_b can't be empty
+
+>>> try:
+...     lazy_matrix_mul([[1, "a"]], [[1, 2]])
+... except TypeError as e:
+...     print(e)
+m_a should contain only integers or floats
+
+>>> try:
+...     lazy_matrix_mul([[1, 2]], [[1, "a"]])
+... except TypeError as e:
+...     print(e)
+m_b should contain only integers or floats
+
+>>> try:
+...     lazy_matrix_mul([[1, 2], [3]], [[1, 2]])
+... except TypeError as e:
+...     print(e)
+each row of m_a must be of the same size
+
+>>> try:
+...     lazy_matrix_mul([[1, 2]], [[1, 2], [3]])
+... except TypeError as e:
+...     print(e)
+each row of m_b must be of the same size
+
+>>> try:
+...     lazy_matrix_mul([[1, 2]], [[1, 2]])
+... except ValueError as e:
+...     print(e)
+m_a and m_b can't be multiplied
 
 >>> try:
 ...     lazy_matrix_mul()
