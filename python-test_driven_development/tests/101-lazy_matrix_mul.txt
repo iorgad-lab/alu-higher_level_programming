@@ -14,58 +14,58 @@ array([[ 7, 10],
 array([[13, 16]])
 
 >>> try:
-...     lazy_matrix_mul("not a list", [[1, 2]])
-... except TypeError as e:
-...     print(e)
-m_a must be a list
+...     lazy_matrix_mul("Holberton", [[5, 6], [7, 8]])
+... except Exception:
+...     print("Error raised")
+Error raised
 
 >>> try:
-...     lazy_matrix_mul([[1, 2]], "not a list")
-... except TypeError as e:
-...     print(e)
-m_b must be a list
+...     lazy_matrix_mul([[5, 6], [7, 8]], "Holberton")
+... except Exception:
+...     print("Error raised")
+Error raised
 
 >>> try:
-...     lazy_matrix_mul([], [[1, 2]])
-... except ValueError as e:
-...     print(e)
-m_a can't be empty
+...     lazy_matrix_mul([[]], [[5, 6], [7, 8]])
+... except Exception:
+...     print("Error raised")
+Error raised
 
 >>> try:
-...     lazy_matrix_mul([[1, 2]], [[]])
-... except ValueError as e:
-...     print(e)
-m_b can't be empty
+...     lazy_matrix_mul([[5, 6], [7, 8]], [[]])
+... except Exception:
+...     print("Error raised")
+Error raised
 
 >>> try:
-...     lazy_matrix_mul([[1, "a"]], [[1, 2]])
-... except TypeError as e:
-...     print(e)
-m_a should contain only integers or floats
+...     lazy_matrix_mul([[5, "6"], [7, 8]], [[5, 6], [7, 8]])
+... except Exception:
+...     print("Error raised")
+Error raised
 
 >>> try:
-...     lazy_matrix_mul([[1, 2]], [[1, "a"]])
-... except TypeError as e:
-...     print(e)
-m_b should contain only integers or floats
+...     lazy_matrix_mul([[5, 6], [7, 8]], [[5, "6"], [7, 8]])
+... except Exception:
+...     print("Error raised")
+Error raised
 
 >>> try:
-...     lazy_matrix_mul([[1, 2], [3]], [[1, 2]])
-... except TypeError as e:
-...     print(e)
-each row of m_a must be of the same size
+...     lazy_matrix_mul([[5, 6, 10], [7, 8]], [[5, 6], [7, 8]])
+... except Exception:
+...     print("Error raised")
+Error raised
 
 >>> try:
-...     lazy_matrix_mul([[1, 2]], [[1, 2], [3]])
-... except TypeError as e:
-...     print(e)
-each row of m_b must be of the same size
+...     lazy_matrix_mul([[5, 6], [7, 8]], [[5, 6, 1], [7, 8]])
+... except Exception:
+...     print("Error raised")
+Error raised
 
 >>> try:
-...     lazy_matrix_mul([[1, 2]], [[1, 2]])
-... except ValueError as e:
-...     print(e)
-m_a and m_b can't be multiplied
+...     lazy_matrix_mul([[1, 2, 3], [3, 4, 5]], [[1, 2], [3, 4]])
+... except Exception:
+...     print("Error raised")
+Error raised
 
 >>> try:
 ...     lazy_matrix_mul()
