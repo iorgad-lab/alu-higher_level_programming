@@ -23,3 +23,9 @@ thanks.
 text must be a string
 
 >>> text_indentation("")
+
+>>> try:
+...     text_indentation()
+... except TypeError as e:
+...     print(type(e).__name__)
+TypeError
