@@ -47,3 +47,15 @@ a must be an integer
 ... except TypeError as e:
 ...     print(type(e).__name__)
 TypeError
+
+>>> try:
+...     add_integer(float("inf"), 2)
+... except OverflowError as e:
+...     print(e)
+cannot convert float infinity to integer
+
+>>> try:
+...     add_integer(float("nan"), 2)
+... except ValueError as e:
+...     print(e)
+cannot convert float NaN to integer
