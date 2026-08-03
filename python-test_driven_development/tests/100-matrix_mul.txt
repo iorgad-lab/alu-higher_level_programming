@@ -83,3 +83,9 @@ m_a and m_b can't be multiplied
 ... except TypeError as e:
 ...     print(type(e).__name__)
 TypeError
+
+>>> try:
+...     matrix_mul([[1, 2], [3, 4]])
+... except TypeError as e:
+...     print(type(e).__name__)
+TypeError
