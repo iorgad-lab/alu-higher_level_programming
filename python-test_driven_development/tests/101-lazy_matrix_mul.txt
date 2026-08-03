@@ -15,7 +15,13 @@ array([[13, 16]])
 
 >>> try:
 ...     lazy_matrix_mul("Holberton", [[5, 6], [7, 8]])
-... except Exception as e:
+... except ValueError as e:
+...     print(e)
+Scalar operands are not allowed, use '*' instead
+
+>>> try:
+...     lazy_matrix_mul([[5, 6], [7, 8]], "Holberton")
+... except ValueError as e:
 ...     print(e)
 Scalar operands are not allowed, use '*' instead
 
@@ -30,6 +36,18 @@ shapes (1,0) and (2,2) not aligned: 0 (dim 1) != 2 (dim 0)
 ... except ValueError as e:
 ...     print(e)
 shapes (2,2) and (1,0) not aligned: 2 (dim 1) != 1 (dim 0)
+
+>>> try:
+...     lazy_matrix_mul([[5, "6"], [7, 8]], [[5, 6], [7, 8]])
+... except TypeError as e:
+...     print(e)
+invalid data type for einsum
+
+>>> try:
+...     lazy_matrix_mul([[5, 6], [7, 8]], [[5, "6"], [7, 8]])
+... except TypeError as e:
+...     print(e)
+invalid data type for einsum
 
 >>> try:
 ...     lazy_matrix_mul([[1, 2, 3], [3, 4, 5]], [[1, 2], [3, 4]])
