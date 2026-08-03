@@ -60,3 +60,9 @@ shapes (2,3) and (2,2) not aligned: 3 (dim 1) != 2 (dim 0)
 ... except TypeError as e:
 ...     print(type(e).__name__)
 TypeError
+
+>>> try:
+...     lazy_matrix_mul([[1, 2], [3, 4]])
+... except TypeError as e:
+...     print(type(e).__name__)
+TypeError
