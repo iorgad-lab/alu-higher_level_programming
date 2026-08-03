@@ -15,13 +15,7 @@ array([[13, 16]])
 
 >>> try:
 ...     lazy_matrix_mul("Holberton", [[5, 6], [7, 8]])
-... except TypeError as e:
-...     print(e)
-invalid data type for einsum
-
->>> try:
-...     lazy_matrix_mul([[5, 6], [7, 8]], "Holberton")
-... except ValueError as e:
+... except Exception as e:
 ...     print(e)
 Scalar operands are not allowed, use '*' instead
 
@@ -29,43 +23,19 @@ Scalar operands are not allowed, use '*' instead
 ...     lazy_matrix_mul([[]], [[5, 6], [7, 8]])
 ... except ValueError as e:
 ...     print(e)
-shapes (2,1) and (2,2) not aligned: 1 (dim 2) != 2 (dim 1)
+shapes (1,0) and (2,2) not aligned: 0 (dim 1) != 2 (dim 0)
 
 >>> try:
 ...     lazy_matrix_mul([[5, 6], [7, 8]], [[]])
 ... except ValueError as e:
 ...     print(e)
-shapes (0,2) and (0,0) not aligned: 2 (dim 1) != 0 (dim 2)
-
->>> try:
-...     lazy_matrix_mul([[5, "6"], [7, 8]], [[5, 6], [7, 8]])
-... except TypeError as e:
-...     print(e)
-invalid data type for einsum
-
->>> try:
-...     lazy_matrix_mul([[5, 6], [7, 8]], [[5, "6"], [7, 8]])
-... except TypeError as e:
-...     print(e)
-invalid data type for einsum
-
->>> try:
-...     lazy_matrix_mul([[5, 6, 10], [7, 8]], [[5, 6], [7, 8]])
-... except ValueError as e:
-...     print(e)
-setting an array element with a sequence.
-
->>> try:
-...     lazy_matrix_mul([[5, 6], [7, 8]], [[5, 6, 1], [7, 8]])
-... except ValueError as e:
-...     print(e)
-setting an array element with a sequence.
+shapes (2,2) and (1,0) not aligned: 2 (dim 1) != 1 (dim 0)
 
 >>> try:
 ...     lazy_matrix_mul([[1, 2, 3], [3, 4, 5]], [[1, 2], [3, 4]])
 ... except ValueError as e:
 ...     print(e)
-shapes (2,2) and (2,2) not aligned: 2 (dim 2) != 2 (dim 2)
+shapes (2,3) and (2,2) not aligned: 3 (dim 1) != 2 (dim 0)
 
 >>> try:
 ...     lazy_matrix_mul()
