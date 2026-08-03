@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-"""Prints the State object with the name passed as argument."""
+"""Prints the State object with a given name (safe from SQL injection)"""
 import sys
 from model_state import Base, State
-from sqlalchemy import (create_engine)
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
@@ -11,8 +11,10 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    instance = session.query(State).filter(State.name == (sys.argv[4],))
-    try:
-        print(instance[0].id)
-    except IndexError:
+    state = session.query(State).filter(
+        State.name == sys.argv[4]).first()
+    if state is None:
         print("Not found")
+    else:
+        print(state.id)
+    session.close()

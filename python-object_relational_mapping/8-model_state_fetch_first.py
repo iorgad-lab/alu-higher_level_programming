@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-"""Prints the first State object from the database."""
+"""Prints the first State object from the database"""
 import sys
 from model_state import Base, State
-from sqlalchemy import (create_engine)
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
@@ -11,8 +11,9 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    instance = session.query(State).order_by(State.id).first()
-    if instance is None:
+    state = session.query(State).order_by(State.id).first()
+    if state is None:
         print("Nothing")
     else:
-        print(instance.id, instance.name, sep=": ")
+        print("{}: {}".format(state.id, state.name))
+    session.close()

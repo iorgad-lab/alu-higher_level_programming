@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-"""Prints all City objects from the database."""
+"""Lists all City objects with their state from the database"""
 import sys
 from model_state import Base, State
 from model_city import City
-from sqlalchemy import (create_engine)
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-
 
 if __name__ == "__main__":
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
@@ -13,5 +12,8 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    for c, s in session.query(City, State).filter(City.state_id == State.id):
-        print("{}: ({}) {}".format(s.name, c.id, c.name))
+    results = session.query(City, State).join(
+        State, City.state_id == State.id).order_by(City.id).all()
+    for city, state in results:
+        print("{}: ({}) {}".format(state.name, city.id, city.name))
+    session.close()

@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-"""Changes the name of a State object from the database."""
+"""Changes the name of the State with id=2 to 'New Mexico'"""
 import sys
 from model_state import Base, State
-from sqlalchemy import (create_engine)
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
@@ -11,6 +11,8 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    new_instance = session.query(State).filter_by(id=2).first()
-    new_instance.name = 'New Mexico'
-    session.commit()
+    state = session.query(State).filter(State.id == 2).first()
+    if state is not None:
+        state.name = "New Mexico"
+        session.commit()
+    session.close()

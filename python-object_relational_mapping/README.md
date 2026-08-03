@@ -1,2 +1,2 @@
-# Python - Object-relational mapping
-This project explores the use of MySQLdb and SQLAlchemy to interact with databases.
+# Python - Almost a circle
+This project is an introduction to Python Object-Oriented Programming, including inheritance, serialization, and unit testing.

@@ -1,16 +1,15 @@
 #!/usr/bin/python3
-"""Safe from SQL injections."""
-import MySQLdb
+"""Lists all states matching user input (safe from SQL injection)"""
 import sys
-
+import MySQLdb
 
 if __name__ == "__main__":
-    db = MySQLdb.connect(host="localhost", user=sys.argv[1],
-                         passwd=sys.argv[2], db=sys.argv[3], port=3306)
+    db = MySQLdb.connect(host="localhost", port=3306,
+                          user=sys.argv[1], passwd=sys.argv[2],
+                          db=sys.argv[3])
     cur = db.cursor()
-    match = sys.argv[4]
-    cur.execute("SELECT * FROM states WHERE name LIKE %s ORDER BY id",
-                (match, ))
+    cur.execute("SELECT * FROM states WHERE name = %s ORDER BY states.id ASC",
+                (sys.argv[4],))
     rows = cur.fetchall()
     for row in rows:
         print(row)
