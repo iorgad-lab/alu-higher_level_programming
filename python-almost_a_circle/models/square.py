@@ -1,68 +1,52 @@
 #!/usr/bin/python3
-"""Module for Square class."""
+"""This module defines the Square class."""
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """A representation of a square."""
+    """Represents a square, a special case of Rectangle."""
 
     def __init__(self, size, x=0, y=0, id=None):
-        """Constructor."""
+        """Initialize a new Square.
+
+        Args:
+            size (int): the size of the square.
+            x (int): the x coordinate of the square.
+            y (int): the y coordinate of the square.
+            id (int): the identity of the new instance.
+        """
         super().__init__(size, size, x, y, id)
 
     @property
     def size(self):
-        """Getter for size."""
+        """Get/set the size of the square."""
         return self.width
 
     @size.setter
     def size(self, value):
-        """Setter for size."""
         self.width = value
         self.height = value
 
-    def update(self, *args, **kwargs):
-        """Update the Square."""
-        if args and len(args) != 0:
-            a = 0
-            for arg in args:
-                if a == 0:
-                    if arg is None:
-                        self.__init__(self.size, self.x, self.y)
-                    else:
-                        self.id = arg
-                elif a == 1:
-                    self.size = arg
-                elif a == 2:
-                    self.x = arg
-                elif a == 3:
-                    self.y = arg
-                a += 1
+    def __str__(self):
+        """Return the string representation of the square."""
+        return "[Square] ({}) {}/{} - {}".format(
+            self.id, self.x, self.y, self.width)
 
-        elif kwargs and len(kwargs) != 0:
-            for k, v in kwargs.items():
-                if k == "id":
-                    if v is None:
-                        self.__init__(self.size, self.x, self.y)
-                    else:
-                        self.id = v
-                elif k == "size":
-                    self.size = v
-                elif k == "x":
-                    self.x = v
-                elif k == "y":
-                    self.y = v
+    def update(self, *args, **kwargs):
+        """Update attributes via no-keyword or key-worded arguments."""
+        if args:
+            attrs = ["id", "size", "x", "y"]
+            for attr, value in zip(attrs, args):
+                setattr(self, attr, value)
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
 
     def to_dictionary(self):
-        """Return the dictionary representation of the Square."""
+        """Return the dictionary representation of the square."""
         return {
             "id": self.id,
-            "size": self.width,
+            "size": self.size,
             "x": self.x,
             "y": self.y
         }
-
-    def __str__(self):
-        """Return the print() and str() representation of a Square."""
-        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y,
-                                                 self.width)
