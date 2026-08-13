@@ -1,12 +1,13 @@
 #!/usr/bin/python3
-"""City model definition using SQLAlchemy"""
+"""This module defines the City model."""
 from sqlalchemy import Column, Integer, String, ForeignKey
 from model_state import Base
 
 
 class City(Base):
-    """Represents a city in the database"""
-    __tablename__ = 'cities'
+    """Represents a city, linked to the MySQL table cities."""
+
+    __tablename__ = "cities"
     id = Column(Integer, primary_key=True, nullable=False,
                 autoincrement=True)
     name = Column(String(128), nullable=False)
